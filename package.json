@@ -1,0 +1,28 @@
+{
+  "name": "ethics-companion",
+  "version": "1.0.0",
+  "description": "Ethics Companion - Thoughtful AI Chat with Ethical Grounding",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install:all": "cd frontend && npm install && cd .. && pip install -r backend/requirements.txt",
+    "build": "cd frontend && npm run build",
+    "preview": "cd frontend && npm run preview",
+    "start": "cd frontend && npm run build && cd ../backend && python -m uvicorn main:app --host 0.0.0.0 --port 8000"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "ethics",
+    "ai",
+    "chat",
+    "companion",
+    "llama",
+    "ollama"
+  ],
+  "author": "",
+  "license": "MIT"
+}

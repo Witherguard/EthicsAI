@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      - OLLAMA_DEFAULT_MODEL=llama3.1:latest
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        - VITE_DEFAULT_MODEL=llama3.1:latest
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000
+
+# Note: Ollama should be installed locally and running with `ollama serve`
+# Download model with: ollama pull llama3.1:8b
