@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig(({ command }) => ({
-  base: command === "build" ? "/ethics-chatbot/" : "/",
+  base: command === "build" ? "/EthicsAI/" : "/",
   plugins: [react()],
   resolve: {
     alias: {
